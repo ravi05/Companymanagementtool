@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+    <form-beans>
+        <form-bean name="EditProfileEmployee" type="com.cmc.rms.employee.formbean.EditProfileEmployee"/>
+        <form-bean name="NewsFormBean" type="com.cmc.rms.administrator.formbean.NewsFormBean"/>
+       
+        <form-bean name="PmProjectDetailFormBean" type="com.cmc.rms.projectmanager.formbean.PmProjectDetailFormBean"/>
+        <form-bean name="DeleteMessageFormBean" type="com.cmc.rms.administrator.formbean.DeleteMessageFormBean"/>
+        <form-bean name="InboxFormBean" type="com.cmc.rms.administrator.formbean.InboxFormBean"/>
+        <form-bean name="ComposeMailFormBean" type="com.cmc.rms.administrator.formbean.ComposeMailFormBean"/>
+        <form-bean name="PmRequirementFormBean" type="com.cmc.rms.projectmanager.formbean.PmRequirementFormBean"/>
+
+        <form-bean name="AssignToPMFormBean" type="com.cmc.rms.administrator.formbean.AssignToPMFormBean"/>
+        <form-bean name="UnassignedProjectsFormBean" type="com.cmc.rms.administrator.formbean.UnassignedProjectsFormBean"/>
+        <form-bean name="NewOrdersFormBean" type="com.cmc.rms.client.formbean.NewOrdersFormBean"/>
+        <form-bean name="LogoutFormBean" type="com.cmc.rms.administrator.formbean.LogoutFormBean"/>
+        <form-bean name="AdminAddEmpFormBean" type="com.cmc.rms.hr.formbean.AdminAddEmpFormBean"/>
+        <form-bean name="HrCandidatesAppliedFormBean" type="com.cmc.rms.hr.formbean.HrCandidatesAppliedFormBean"/>
+        <form-bean name="CandidatesAppliedFormBean" type="com.cmc.rms.hr.formbean.CandidatesAppliedFormBean"/>
+        <form-bean name="RecuritmentFormBean" type="com.cmc.rms.employee.formbean.RecuritmentFormBean"/>
+        <form-bean name="NewRecruitmentFormBean" type="com.cmc.rms.hr.formbean.NewRecruitmentFormBean"/>
+        <form-bean name="JobApplicationFormBean" type="com.cmc.rms.hr.formbean.JobApplicationFormBean"/>
+        <form-bean name="PasswordRecoveryFormBean" type="com.cmc.rms.administrator.formbean.PasswordRecoveryFormBean"/>
+        <form-bean name="ClientFormBean" type="com.cmc.rms.client.formbean.ClientFormBean"/>
+        <form-bean name="LoginFormBean" type="com.cmc.rms.administrator.formbean.LoginFormBean"/>
+        <form-bean name="AddEmployeeFormBean" type="com.cmc.rms.administrator.formbean.AddEmployeeFormBean"/>
+        <form-bean name="EditEmployeeFormBean" type="com.cmc.rms.administrator.formbean.EditEmployeeFormBean"/>
+        <form-bean name="ReportsFormBean" type="com.cmc.rms.administrator.formbean.ReportsFormBean"/>
+        <form-bean name="ProjectManagerReportFormBean" type="com.cmc.rms.administrator.formbean.ProjectManagerReportFormBean"/>
+        <form-bean name="RegisterationFormBean" type="com.cmc.rms.employee.formbean.RegisterationFormBean"/>
+        <form-bean name="RequirementsFormBean" type="com.cmc.rms.administrator.formbean.RequirementsFormBean"/>
+        <form-bean name="PmManageHumanResourceFormBean" type="com.cmc.rms.projectmanager.formbean.PmManageHumanResourceFormBean"/>
+        <form-bean name="ProjectManagerResourceFormBean" type="com.cmc.rms.projectmanager.formbean.ProjectManagerResourceFormBean"/>
+    </form-beans>
+    
+    <global-exceptions>
+    
+    </global-exceptions>
+
+    <global-forwards>
+      
+    </global-forwards>
+
+    <action-mappings>
+     <action input="/html-jsp/default.jsp" name="LoginFormBean" parameter="loginMethod" path="/login" validate="true" scope="session" type="com.cmc.rms.administrator.action.LoginAction">
+        <forward name="successAdmin" path="/html-jsp/request_tracker.jsp"/>
+        <forward name="successEmp" path="/html-jsp/employee.jsp"/>
+        <forward name="successPMngr" path="/html-jsp/project_manager.jsp"/>
+        <forward name="successHRMngr" path="/html-jsp/hrManager.jsp"/>
+        <forward name="firstReg" path="/html-jsp/registeration.jsp"/>
+        <forward name="fail" path="/html-jsp/default.jsp"/>
+     </action>
+    <!--<action input="/html-jsp/login.jsp" name="LoginFormBean" parameter="loginMethod" path="/login" validate="true" scope="session" type="com.cmc.rms.administrator.action.LoginAction">
+        <forward name="successAdmin" path="/html-jsp/request_tracker.jsp"/>
+        <forward name="successEmp" path="/html-jsp/employee.jsp"/>
+        <forward name="successPMngr" path="/html-jsp/project_manager.jsp"/>
+        <forward name="successHRMngr" path="/html-jsp/hrManager.jsp"/>
+        <forward name="fail" path="/html-jsp/default.jsp"/>
+     </action>-->
+
+
+
+     <action input="/html-jsp/default.jsp" name="ClientFormBean" parameter="clientMethod" path="/client" validate="true" scope="session" type="com.cmc.rms.client.action.ClientAction">
+        <forward name="updateClient" path="/html-jsp/default.jsp"/>
+        <forward name="fail" path="/html-jsp/default.jsp"/>
+     </action>
+     <action input="/html-jsp/pass_rcvr_form.jsp" name="PasswordRecoveryFormBean" parameter="passwordRecoveryMethod" path="/passwordRecovery" scope="session" type="com.cmc.rms.administrator.action.PasswordRecoveryAction">
+     <forward name="password_Recovery" path="/html-jsp/pass_rcvr_form.jsp"/>
+     <forward name="fail" path="/html-jsp/pass_rcvr_form.jsp"/>
+     </action>
+      <action input="/html-jsp/job_application_form.jsp" name="JobApplicationFormBean" parameter="jobApplicationMethod" path="/jobApplication" scope="session" type="com.cmc.rms.hr.action.JobApplicationAction">
+         <forward name="dataSubmitted" path="/html-jsp/recuritment.jsp"/>
+         </action>
+     <action input="/html-jsp/add_emp.jsp" name="AddEmployeeFormBean" parameter="addEmployeeMethod" path="/addEmployee" scope="session" type="com.cmc.rms.administrator.action.AddEmployeeAction">
+        <forward name="add_employee" path="/html-jsp/request_tracker_inside.jsp"></forward>
+        </action>
+        <action input="/html-jsp/edit_emp.jsp" name="EditEmployeeFormBean" parameter="editEmployeeMethod" path="/editEmployee" scope="session" type="com.cmc.rms.administrator.action.EditEmployeeAction">
+        <forward name="edit_employee" path="/html-jsp/edit_emp.jsp"></forward>
+        </action>
+        <action input="/html-jsp/reports.jsp" name="ReportsFormBean" parameter="reportsMethod" path="/reports" scope="session" type="com.cmc.rms.administrator.action.ReportsAction">
+    <forward name="report" path="/html-jsp/request_tracker_inside.jsp"></forward>
+    </action>
+    <action input="/html-jsp/pm_generate_report.jsp" name="JobApplicationFormBean" parameter="pmReportMethod" path="/pmReport" scope="session" type="com.cmc.rms.projectmanager.action.ProjectManagerReportAction">
+        <forward name="pm_Report" path="/html-jsp/project_manager.jsp"/>
+        </action>
+      <action input="/html-jsp/registeration.jsp" name="RegisterationFormBean" parameter="registerationMethod" path="/registeration" scope="request" type="com.cmc.rms.employee.action.RegisterationAction">
+        <forward name="registered" path="/html-jsp/employee.jsp"/>
+       </action>
+    <action input="/html-jsp/new_rec.jsp" name="NewRecruitmentFormBean" parameter="recruitmentMethod" path="/recruitment" scope="session" type="com.cmc.rms.hr.action.NewRecruitmentAction">
+      <forward name="new_recruitment" path="/html-jsp/hr_inside.jsp"/>
+      </action>
+      <action input="/html-jsp/requirements.jsp" name="RequirementsFormBean" parameter="requirementsMethod" path="/requirements" scope="session" type="com.cmc.rms.administrator.action.RequirementsAction">
+        <forward name="enterrequirements" path="/html-jsp/request_tracker_inside.jsp"/>
+        </action>
+        <action input="/html-jsp/pmManageHumanResource.jsp" name="PmManageHumanResourceFormBean" parameter="pmmanagehumanresourceMethod" path="/pmmanagehumanresource" scope="session" type="com.cmc.rms.projectmanager.action.PmManageHumanResourceAction">
+        <forward name="HumanResourceManagement" path="/html-jsp/default.jsp"/>
+        </action>
+    <action input="/html-jsp/pm_manage_resource.jsp" name="ProjectManagerResourceFormBean" parameter="projectManagerResourceMethod" path="/projectManagerResource" scope="session" type="com.cmc.rms.projectmanager.action.ProjectManagerResourceAction">
+    <forward name="projectManagerResource" path="/html-jsp/pm_manage_resource.jsp"></forward>
+        </action>
+        <action input="/html-jsp/recuritment.jsp" name="NewRecruitmentFormBean" parameter="recuritmentNewMethod" path="/recruitmentNew" scope="session" type="com.cmc.rms.hr.action.RecruitmentAction">
+        <forward name="outputRec" path="/html-jsp/job_application_form.jsp"/>
+        </action>
+        <action input="/html-jsp/candidatesApplied.jsp" name="CandidatesAppliedFormBean" parameter="candidatesappliedMethod" path="/candidatesapplied" scope="session" type="com.cmc.rms.hr.action.CandidatesAppliedAction">
+        <forward name="success" path="/html-jsp/hr_candidatesapplied.jsp"/>
+        </action>
+        <action input="/html-jsp/hr_candidatesapplied.jsp" name="HrCandidatesAppliedFormBean" parameter="hrcandidatesappliedMethod" path="/hrcandidatesapplied" scope="session" type="com.cmc.rms.hr.action.HrCandidatesAppliedAction">
+        <forward name="success" path="/html-jsp/hrManager.jsp"/>
+        </action>
+        <action input="/html-jsp/adminAddEmp.jsp" name="AdminAddEmpFormBean" parameter="adminaddempMethod" path="/adminaddemp" scope="session" type="com.cmc.rms.hr.action.AdminAddEmpAction">
+        <forward name="success" path="/html-jsp/admin_tools.jsp"/>
+        </action>
+        <action input="/html-jsp/request_tracker.jsp" name="LogoutFormBean" parameter="logoutMethod" path="/logout" scope="session" type="com.cmc.rms.administrator.action.LogoutAction">
+        <forward name="success" path="/html-jsp/login.jsp"/>
+            </action>
+        <action input="/html-jsp/adminNewOrders.jsp" name="NewOrdersFormBean" parameter="neworderMethod" path="/neworder" scope="request" type="com.cmc.rms.client.action.NewOrdersAction">
+        <forward name="success" path="/html-jsp/adminNewOrders.jsp"/>
+        </action>
+        <action input="/html-jsp/adminUnassignedProjects.jsp" name="UnassignedProjectsFormBean" parameter="unassignedprojectsMethod" path="/unassignedprojects" scope="request" type="com.cmc.rms.administrator.action.UnassignedProjects">
+        <forward name="success" path="/html-jsp/availableProjectManager.jsp"/>
+        </action>
+        <action input="/html-jsp/availableProjectManager.jsp" name="AssignedToPMFormBean" parameter="assigntopmMethod" path="/assigntopm" scope="request" type="com.cmc.rms.administrator.action.AssignToPMAction">
+        <forward name="success" path="/html-jsp/adminUnassignedProjects.jsp"/>
+        </action>
+        <action input="/html-jsp/pmRequirement.jsp" name="PmRequirementFormBean" parameter="pmrequirementMethod" path="/pmrequirement" scope="request" type="com.cmc.rms.projectmanager.action.PmRequirementAction">
+        <forward name="success" path="/html-jsp/pmSubmitRequest.jsp"/>
+        </action>
+        <action input="/html-jsp/inbox.jsp" name="InboxFormBean" parameter="inboxMethod" path="/inbox" scope="session" type="com.cmc.rms.administrator.action.InboxAction">
+        <forward name="inboxMsg" path="/html-jsp/message.jsp"/>
+        </action>
+        <action input="/html-jsp/draft.jsp" name="DeleteMessageFormBean" parameter="deleteMsgMethod" path="/deleteMsg" scope="session" type="com.cmc.rms.administrator.action.DeleteMessageAction">
+        <forward name="delete" path="/html-jsp/draft.jsp"/>
+       </action>
+       <action input="/html-jsp/composeMail.jsp" name="ComposeMailFormBean" parameter="dispatch" path="/composeMail" scope="session" type="com.cmc.rms.administrator.action.ComposeMailLookupDispatchAction">
+       <forward name="composeM" path="/html-jsp/mail.jsp"/>
+       <forward name="saveM" path="/html-jsp/mail.jsp"/>
+       </action>
+        <action input="/html-jsp/pmProjectDetailForm.jsp" name="PmProjectDetailFormBean" parameter="pmprojectdetailMethod" path="/pmprojectdetail" scope="request" type="com.cmc.rms.projectmanager.action.PmProjectDetailAction">
+        <forward name="detailEntered" path="/html-jsp/pmNewProject.jsp"/>
+        </action>
+       <action input="/html-jsp/uploadNews.jsp" name="NewsFormBean" parameter="newsMethod" path="/news" scope="session" type="com.cmc.rms.administrator.action.NewsAction">
+       <forward name="newsUpload" path="/html-jsp/uploadNews.jsp"/>
+       </action>
+       <action input="/html-jsp/editProfileEmployee.jsp" name="EditProfileEmployee" parameter="editProfileMethod" path="/editProfile" scope="session" type="com.cmc.rms.employee.action.EditProfileEmployeeAction">
+       <forward name="editProfileEmp" path="/html-jsp/viewProfileEmployee.jsp"/>
+      </action>
+  
+        </action-mappings>
+    
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <message-resources parameter="com/myapp/struts/ApplicationResource"/>    
+    
+    <!-- ========================= Tiles plugin ===============================-->
+    <!--
+    This plugin initialize Tiles definition factory. This later can takes some
+    parameters explained here after. The plugin first read parameters from
+    web.xml, thenoverload them with parameters defined here. All parameters
+    are optional.
+    The plugin should be declared in each struts-config file.
+    - definitions-config: (optional)
+    Specify configuration file names. There can be several comma
+    separated file names (default: ?? )
+    - moduleAware: (optional - struts1.1)
+    Specify if the Tiles definition factory is module aware. If true
+    (default), there will be one factory for each Struts module.
+    If false, there will be one common factory for all module. In this
+    later case, it is still needed to declare one plugin per module.
+    The factory will be initialized with parameters found in the first
+    initialized plugin (generally the one associated with the default
+    module).
+    true : One factory per module. (default)
+    false : one single shared factory for all modules
+    - definitions-parser-validate: (optional)
+    Specify if xml parser should validate the Tiles configuration file.
+    true : validate. DTD should be specified in file header (default)
+    false : no validation
+
+    Paths found in Tiles definitions are relative to the main context.
+    -->
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    <!-- ========================= Validator plugin ================================= -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+  
+</struts-config>
